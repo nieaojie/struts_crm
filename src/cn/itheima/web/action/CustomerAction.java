@@ -3,6 +3,7 @@ package cn.itheima.web.action;
 import cn.itheima.domain.Customer;
 import cn.itheima.service.CustomerService;
 import cn.itheima.service.impl.CustomerServiceImpl;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import org.apache.commons.lang3.StringUtils;
@@ -23,7 +24,6 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
     public String list() throws Exception {
         //1.接收参数
         HttpServletRequest request = ServletActionContext.getRequest();
-        HttpServletResponse response = ServletActionContext.getResponse();
         String cust_name = request.getParameter("cust_name");
         //2、创建离线查询对象
         DetachedCriteria dc = DetachedCriteria.forClass(Customer.class);
@@ -34,7 +34,9 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
         //4.调用Service将离线对象传递
         List<Customer> customerList = cs.getAll(dc);
         //5.将返回到的list放入request域，转发到list.jsp显示
-        request.setAttribute("list",customerList);
+//        request.setAttribute("list",customerList);
+        //放到ActionContext中
+        ActionContext.getContext().put("list",list());
         return "list";
     }
 
