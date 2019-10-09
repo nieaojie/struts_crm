@@ -64,5 +64,6 @@
         <property name="current_session_context_class">thread</property>
         <mapping resource="cn/itheima/domain/Customer.hbm.xml"></mapping>
         <mapping resource="cn/itheima/domain/LinkMan.hbm.xml"></mapping>
+        <mapping resource="cn/itheima/domain/User.hbm.xml"></mapping>
     </session-factory>
 </hibernate-configuration>

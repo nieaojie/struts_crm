@@ -16,5 +16,13 @@
                     <param name="namespace">/</param>
             </result>
         </action>
+
+        <action name="UserAction_*" class="cn.itheima.web.action.UserAction" method="{1}">
+            <result name="toHome">/index.htm</result>
+            <result name="toList" type="redirectAction">
+                <param name="actionName">CustomerAction_list</param>
+                <param name="namespace">/</param>
+            </result>
+        </action>
     </package>
 </struts>
